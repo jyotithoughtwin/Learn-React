@@ -7,10 +7,10 @@ import DashboardPage from "./pages/Dashboard";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route exact path="/" element={<LoginPage />} />
+      <Route exact path="/login" element={<LoginPage />} />
+      <Route exact path="/signup" element={<SignupPage />} />
+      <Route exact path="/dashboard" element={<DashboardPage />} />
     </Routes>
   );
 };
