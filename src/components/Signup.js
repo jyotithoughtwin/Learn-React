@@ -24,7 +24,7 @@ const Signup = () => {
     setSuccessMessage("");
 
     try {
-      const response = await fetch("https://apisootra.nyxwolves.com/customer/auth/signup", {
+      const response = await fetch("https://reqres.in/api/register", {
         method: "POST",
         headers: {
           "accept": "application/json",

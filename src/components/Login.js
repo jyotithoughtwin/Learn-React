@@ -23,7 +23,7 @@ const Login = () => {
     setSuccessMessage(""); 
 
     try {
-      const response = await fetch("https://apisootra.nyxwolves.com/customer/auth/login", {
+      const response = await fetch("https://reqres.in/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
