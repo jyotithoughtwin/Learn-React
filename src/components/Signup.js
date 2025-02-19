@@ -24,7 +24,7 @@ const Signup = () => {
     setSuccessMessage("");
 
     try {
-      const response = await fetch("https://reqres.in/api/register", {
+      const response = await fetch("https://backend-todo-1-uz9r.onrender.com/signup", {
         method: "POST",
         headers: {
           "accept": "application/json",
@@ -62,18 +62,10 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="First Name"
+          placeholder="Name"
           onChange={handleChange}
-          name="firstName"
-          value={formData.firstName}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          onChange={handleChange}
-          name="lastName"
-          value={formData.lastName}
+          name="name"
+          value={formData.name}
           required
         />
         <input
