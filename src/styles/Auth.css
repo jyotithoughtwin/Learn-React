@@ -51,3 +51,246 @@
   font-size: 14px;
   margin-bottom: 10px;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+.w-64 {
+  width: 250px;
+  background-color: #2c2f33;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.text-2xl {
+  color: #7289da;
+}
+
+.space-y-2 li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.space-y-2 li:hover {
+  background-color: #23272a;
+}
+
+.space-y-2 li.active {
+  background-color: #7289da;
+  color: white;
+}
+
+.flex-1 {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.notification-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin-left: auto; /* This pushes it to the right */
+}
+
+.logout-button:hover {
+  color: #7289da;
+}
+
+.card {
+  background: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 0;
+}
+
+.card-content h3 {
+  color: #333;
+}
+
+
+.menu-list li:hover {
+  background-color: #0f76bb;
+  border-radius: 4px;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+
+.menu-list li.active {
+  background-color: #007bff;
+  color: white;
+}
+
+
+.user-management {
+  padding: 20px;
+}
+
+.user-management h2 {
+  color: #333;
+}
+
+.user-management table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-management table th,
+.user-management table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.status-active {
+  color: #28a745;
+  font-weight: bold;
+}
+.status-inactive {
+  color: #e23c30;
+  font-weight: bold;
+}
+
+.user-management .controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-management .controls input,
+.user-management .controls select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+
+.pagination button.active-page {
+  background: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.pagination button:hover:not(.active-page) {
+  background: #e2e6ea;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+/* Home Component Styles */
+.home-wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Home Card Container */
+.home-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Home Card Styles */
+.home-card {
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  transition: transform 0.3s;
+}
+
+.home-card:hover {
+  transform: translateY(-10px);
+}
+
+.home-card h2 {
+  font-size: 1.2em;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.home-count {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Color Variants */
+.home-active {
+  background-color: #e6ffed;
+  border-left: 5px solid #28a745;
+}
+
+.home-deactive {
+  background-color: #ffe6e6;
+  border-left: 5px solid #dc3545;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .home-card-container {
+    flex-direction: column;
+  }
+
+  .home-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
