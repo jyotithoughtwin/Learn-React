@@ -1,54 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
-import UserManagement from './userManagement';
-import Home from './home';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('Home');
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
 
   const menuItems = [
-    'Home',
-    'Company Management',
-    'Users Management',
-    'User Profile'
+    { name: 'Home', path: '/dashboard/home' },
+    { name: 'Users Management', path: '/dashboard/users' },
+    { name: 'User Profile', path: '/dashboard/profile' }
   ];
+  const handleLogOut = () =>{
+    localStorage.removeItem("authToken"); 
 
-  const handleLogout = () => {
-    navigate('/login');  
-  };
-
+    setTimeout(() => {
+      window.location.href = "/login"; 
+    }, 500);
+    // setError(true);
+    return;
+  }
   return (
-    <div style={{ display: 'flex' }}>
-      <aside className="w-64">
-        <h2 className="text-2xl">DASHBOARD</h2>
+    <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <aside className="w-64 sidebar">
+        <h2 className="text-2xl sidebar-title">DASHBOARD</h2>
         <ul className="menu-list">
           {menuItems.map(item => (
-            <li 
-              key={item} 
-              className={item === activeTab ? 'active' : ''} 
-              onClick={() => setActiveTab(item)}
-            >
-              {item}
+            <li key={item.name}>
+              <NavLink 
+                to={item.path}
+                className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}
+              >
+                {item.name}
+              </NavLink>
             </li>
           ))}
         </ul>
       </aside>
       <main className="flex-1">
-        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
+        <header className="dashboard-header">
+          <button className="logout-button" onClick={handleLogOut}>Logout</button>
         </header>
         <div className="card">
           <div className="card-content">
-            {activeTab === 'Home' && <Home />}
-            {activeTab === 'Users Management' && <UserManagement />}
-            {activeTab !== 'Home' && activeTab !== 'Users Management' && (
-              <>
-                <h3>{activeTab}</h3>
-                <p>Content for {activeTab} goes here...</p>
-              </>
-            )}
+            <Outlet />
           </div>
         </div>
       </main>

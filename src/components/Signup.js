@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Auth.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // Ensure correct env variable name
 
 const Signup = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
@@ -24,7 +25,7 @@ const Signup = () => {
     setSuccessMessage("");
 
     try {
-      const response = await fetch("https://backend-todo-1-uz9r.onrender.com/signup", {
+      const response = await fetch(`${API_BASE_URL}/signup`, {
         method: "POST",
         headers: {
           "accept": "application/json",
@@ -43,8 +44,8 @@ const Signup = () => {
       localStorage.setItem("authToken", data.token);
 
       setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000); 
+        window.location.href = "/dashboard/home"; // Forces a full reload
+      }, 500);
     } catch (error) {
       setError(error.message);
     } finally {

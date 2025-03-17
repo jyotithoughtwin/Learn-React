@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // Ensure correct env variable name
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState(""); 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); 
+
+  console.log(`API_BASE_URL: ${API_BASE_URL}`); // Debugging to check if it's loaded
 
   const handleChange = (e) => {
     setFormData({
@@ -23,7 +27,7 @@ const Login = () => {
     setSuccessMessage(""); 
 
     try {
-      const response = await fetch("https://backend-todo-1-uz9r.onrender.com/login", {
+      const response = await fetch(`${API_BASE_URL}/login`, { // Use dynamic API base URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,9 +47,8 @@ const Login = () => {
       localStorage.setItem("authToken", data.token);
 
       setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000); 
-
+        window.location.href = "/dashboard/home"; // Forces a full reload
+      }, 500);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
